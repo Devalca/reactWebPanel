@@ -1,7 +1,8 @@
-import React from 'react'
-import { Typography, Paper, Avatar, Button } from '@material-ui/core'
+import React, { useEffect, useState } from 'react'
+import { Typography, Paper, Avatar, CircularProgress, Button } from '@material-ui/core'
 import VerifiedUserOutlined from '@material-ui/icons/VerifiedUserOutlined'
 import withStyles from '@material-ui/core/styles/withStyles'
+import firebase from '../firebase'
 import { Link } from 'react-router-dom'
 
 const styles = theme => ({
@@ -33,7 +34,13 @@ const styles = theme => ({
 })
 
 function HomePage(props) {
-	const { classes } = props
+    const { classes } = props
+	
+	if(firebase.getCurrentUsername()) {
+		alert('Silahkan Login Sebagai Admin')
+		logout()
+		return null
+	}
 
 	return (
 		<main className={classes.main}>
@@ -50,13 +57,17 @@ function HomePage(props) {
 					variant="contained"
 					color="secondary"
 					component={Link}
-					to="/login"
+					to="/dashboard"
 					className={classes.submit}>
-					Login
+					Dashboard
           		</Button>
 			</Paper>
 		</main>
 	)
+	async function logout() {
+		await firebase.logout()
+		props.history.push('/')
+	}
 }
 
 export default withStyles(styles)(HomePage)

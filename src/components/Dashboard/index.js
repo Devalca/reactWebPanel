@@ -50,18 +50,19 @@ const styles = theme => ({
 
 function Dashboard(props) {
 
-	const [status, setStatus] = useState('')
-
-	useEffect(() => {
-		firebase.getCurrentAdmin().then(setStatus)
-	}, [])
 	const { classes } = props
 
-	if(!firebase.auth.currentUser) {
-		firebase.logout()
-		props.history.replace('/login')
-		return null
-	}
+	// const [status, setStatus] = useState('')
+
+	// useEffect(() => {
+	// 	firebase.getCurrentAdmin().then(setStatus)
+	// }, [])
+
+	// if(!firebase.auth.currentUser) {
+	// 	firebase.logout()
+	// 	props.history.replace('/login')
+	// 	return null
+	// }
 
 	return (
 		<main className={classes.main}>

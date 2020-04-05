@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './styles.css'
 import HomePage from '../HomePage'
 import Login from '../Login'
+import Validasi from '../HomePage/valdasi'
 import Register from '../Register'
 import Dashboard from '../Dashboard'
 import RsCalon from '../Register/calon'
@@ -33,6 +34,7 @@ export default function App() {
 			<Router>
 				<Switch>
 					<Route exact path="/" component={HomePage} />
+					<Route exact path="/valdasi" component={Validasi} />
 					<Route exact path="/login" component={Login} />
 					<Route exact path="/register" component={Register} />
 					<Route exact path="/dashboard" component={Dashboard} />

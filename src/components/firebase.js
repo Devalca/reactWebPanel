@@ -79,11 +79,10 @@ class Firebase {
 	}
 
 	async getCurrentAdmin() {
-		if(!this.auth.currentUser) {
-			return alert('Silahkan Masuk Sebagai Admin')
-		} else {
-		const status = await this.db.doc(`status/${this.auth.currentUser.uid}`).get()
-		return status.get('status')
+		if(this.auth.currentUser) {
+			const status = await this.db.doc(`status/${this.auth.currentUser.uid}`).get()
+			return status.get('status')
+			
 		}
 	}
 }

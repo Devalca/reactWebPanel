@@ -196,7 +196,8 @@ function RegisterCalon(props) {
 	async function onRegisterCalon() {
 		try {
 			await firebase.addCalon(nama, nim, prodi, angkatan, nourut, detail2, visi, misi,foto, hasil)
-			props.history.replace('/dashboard')
+            alert('Data Sedang Di Upload Mohon Tunggu ...')
+            props.history.replace('/dashboard')
 		} catch(error) {
 			alert(error.message)
 		}
